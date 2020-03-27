@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'feedback\feedback\controllers';
+    public $controllerNamespace = 'itshkacomua\feedback\controllers';
     public $defaultRoute = 'feed-back';
 
     /**

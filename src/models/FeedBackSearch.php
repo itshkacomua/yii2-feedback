@@ -4,10 +4,10 @@ namespace itshkacomua\feedback\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\modules\feedback\models\FeedBack;
+use itshkacomua\feedback\models\FeedBack;
 
 /**
- * FeedBackSearch represents the model behind the search form of `common\modules\feedback\models\FeedBack`.
+ * FeedBackSearch represents the model behind the search form of `itshkacomua\feedback\models\FeedBack`.
  */
 class FeedBackSearch extends FeedBack
 {
