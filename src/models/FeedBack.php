@@ -23,7 +23,8 @@ use Yii;
  */
 class FeedBack extends \yii\db\ActiveRecord
 {
-    public $purpose_list = [1 => 'Задать вопрос', 2 => 'Пожелание', 3 => 'Предложение'];
+    public $verifyCode;
+
     /**
      * {@inheritdoc}
      */
@@ -44,6 +45,7 @@ class FeedBack extends \yii\db\ActiveRecord
             ['email', 'email'],
             [['name', 'email', 'subject'], 'string', 'max' => 255],
             [['user_update'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_update' => 'id']],
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -63,6 +65,16 @@ class FeedBack extends \yii\db\ActiveRecord
             'created_at' => Yii::t('models', 'Created At'),
             'user_update' => Yii::t('models', 'User Update'),
             'updated_at' => Yii::t('models', 'Updated At'),
+            'verifyCode' => 'Verification Code',
+        ];
+    }
+
+    public function getPurposeList()
+    {
+        return [
+            "1" => Yii::t('models', 'Ask a Question'),
+            "2" => Yii::t('models', 'Wish'),
+            "3" => Yii::t('models', 'Sentence')
         ];
     }
 
@@ -74,5 +86,16 @@ class FeedBack extends \yii\db\ActiveRecord
     public function getUserUpdate()
     {
         return $this->hasOne(User::className(), ['id' => 'user_update']);
+    }
+
+    public function sendEmail($email)
+    {
+        return Yii::$app->mailer->compose()
+            ->setTo($email)
+            ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
+            ->setReplyTo([$this->email => $this->name])
+            ->setSubject($this->purposeList[$this->purpose_id] . ' ' . $this->subject)
+            ->setTextBody($this->content)
+            ->send();
     }
 }
