@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\feedback\models;
+namespace itshkacomua\feedback\models;
 
 use common\models\User;
 use Yii;

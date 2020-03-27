@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\feedback\models;
+namespace itshkacomua\feedback\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
