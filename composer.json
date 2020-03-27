@@ -2,7 +2,7 @@
   "name": "itshkacomua/yii2-feedback",
   "description": "Feedback module for yii2",
   "type": "yii2-extension",
-  "keywords": ["yii2","extension","feedback",'module'],
+  "keywords": ["yii2","extension","feedback"],
   "license": "MIT",
   "authors": [
     {
