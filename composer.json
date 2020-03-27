@@ -1,0 +1,22 @@
+{
+  "name": "itshkacomua/yii2-feedback",
+  "description": "Feedback module for yii2",
+  "type": "yii2-extension",
+  "keywords": ["yii2","extension", "feedback", 'module'],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrey Kravchenko",
+      "email": "progandrey@gmail.com",
+      "homepage": "https://itshka.com.ua/"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "itshkacomua\\feedback\\": "src"
+    }
+  }
+}
