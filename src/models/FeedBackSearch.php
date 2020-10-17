@@ -18,7 +18,7 @@ class FeedBackSearch extends FeedBack
     {
         return [
             [['id', 'purpose_id', 'created_at', 'user_update', 'updated_at'], 'integer'],
-            [['name', 'email', 'subject', 'content', 'answer'], 'safe'],
+            [['name', 'email', 'subject', 'content', 'answer', 'phone'], 'safe'],
         ];
     }
 
@@ -67,6 +67,7 @@ class FeedBackSearch extends FeedBack
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'answer', $this->answer]);

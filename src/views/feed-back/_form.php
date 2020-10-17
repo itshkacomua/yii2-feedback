@@ -12,11 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'purpose_id')->dropDownList($model->purpose_list) ?>
+    <?= $form->field($model, 'purpose_id')->dropDownList($model->purposeList) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 

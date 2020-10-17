@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'purpose_id',
             'name',
             'email:email',
+            'phone',
             'subject',
             'content:ntext',
             'answer:ntext',

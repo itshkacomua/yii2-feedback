@@ -43,7 +43,7 @@ class FeedBack extends \yii\db\ActiveRecord
             [['purpose_id', 'created_at', 'user_update', 'updated_at'], 'integer'],
             [['content', 'answer'], 'string'],
             ['email', 'email'],
-            [['name', 'email', 'subject'], 'string', 'max' => 255],
+            [['name', 'email', 'subject', 'phone'], 'string', 'max' => 255],
             [['user_update'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_update' => 'id']],
             ['verifyCode', 'captcha'],
         ];
@@ -59,6 +59,7 @@ class FeedBack extends \yii\db\ActiveRecord
             'purpose_id' => Yii::t('models', 'Purpose ID'),
             'name' => Yii::t('models', 'Name'),
             'email' => Yii::t('models', 'Email'),
+            'phone' => Yii::t('models', 'Phone'),
             'subject' => Yii::t('models', 'Subject'),
             'content' => Yii::t('models', 'Content'),
             'answer' => Yii::t('models', 'Answer'),

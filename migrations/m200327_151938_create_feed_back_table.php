@@ -17,6 +17,7 @@ class m200327_151938_create_feed_back_table extends Migration
             'purpose_id' => $this->smallInteger()->notNull(),
             'name' => $this->string(),
             'email' => $this->string(),
+            'phone' => $this->string(),
             'subject' => $this->string(),
             'content' => $this->text(),
             'answer' => $this->text(),
