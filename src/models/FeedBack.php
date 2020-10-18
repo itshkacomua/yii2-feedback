@@ -23,6 +23,7 @@ use Yii;
  */
 class FeedBack extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE_POST = 'create_post';
     public $verifyCode;
 
     /**
@@ -40,12 +41,12 @@ class FeedBack extends \yii\db\ActiveRecord
     {
         return [
             [['purpose_id', 'content'], 'required'],
-            [['purpose_id', 'created_at', 'user_update', 'updated_at'], 'integer'],
+            [['purpose_id', 'created_at', 'user_update', 'updated_at', 'phone'], 'integer'],
             [['content', 'answer'], 'string'],
             ['email', 'email'],
-            [['name', 'email', 'subject', 'phone'], 'string', 'max' => 255],
+            [['name', 'email', 'subject'], 'string', 'max' => 255],
             [['user_update'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_update' => 'id']],
-            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha', 'on' => self::SCENARIO_CREATE_POST],
         ];
     }
 
@@ -70,13 +71,26 @@ class FeedBack extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getPurposeList()
+    public function scenarios()
     {
-        return [
+        $scenarios = parent::scenarios();
+
+        $scenarios[self::SCENARIO_CREATE_POST] = ['purpose_id', 'subject', 'content', 'verifyCode', 'name', 'email', 'phone'];
+        return $scenarios;
+    }
+
+    public function getPurposeList($id = '')
+    {
+        $purpose = [
             "1" => Yii::t('models', 'Ask a Question'),
             "2" => Yii::t('models', 'Wish'),
             "3" => Yii::t('models', 'Sentence')
         ];
+
+        if (!empty($id)) {
+            return $purpose[$id];
+        }
+        return $purpose;
     }
 
     /**
