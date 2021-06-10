@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'subject',
             'content:ntext',
             'answer:ntext',
-            'created_at',
+            'created_at:datetime',
             'user_update',
-            'updated_at',
+            'updated_at:datetime',
         ],
     ]) ?>
 
